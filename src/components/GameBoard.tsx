@@ -27,7 +27,7 @@ interface TileType {
 //  }
 
 let boardType = BoardSets._COPENHAGEN
-
+// Test
 let move: Coordinates[] = [] 
 function tileClick(tile: TileType) {
     let fromCoords: []
