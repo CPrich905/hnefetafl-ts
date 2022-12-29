@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  height: 60%;
+  width: 100vw;
+}
+
+body {
+/* background-color: lightgreen; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+div.gameboard {
+  width: 550px;
+  height: 550px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+div.board-square {
+  width: 50px;
+  height: 50px;
+  border: 1px dashed black;
+}
+
+div.center, div.corner {
+  background-color: grey;
+}
+
+div.king {
+  background-image: url(https://images.fineartamerica.com/images-medium-large-5/king-chess-piece-ktsdesign.jpg);
+  background-size: 100%;
+}
+div.defender {
+  background-image: url(https://www.tornado-studios.com/sites/default/files/styles/slider_full/public/products/1174/reel-360-1/chess-pieces-rook-white-0000.jpg?itok=DmqQ-t6G);
+  background-size: 100%;
+}
+div.attacker {
+  background-image: url(https://i.pinimg.com/originals/78/1c/5d/781c5dd91fca4e8926e7e55cca5996ce.jpg);
+  background-size: 100%;
+}
+
+div.from {
+  border: 2px solid red;
+}
+
+div.to {
+  border: 2px solid green;
+}
+
+div.flex-container {
+  display: flex;
+}
+
