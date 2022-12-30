@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { BoardSets } from "./BoardSets"
 import { Coordinates } from '../types/Coordinates'
 import Tile from './Tile'
@@ -9,10 +9,10 @@ import { TilePosition } from '../types/TilePosition'
 // Manually set board type to Copenhagen.
 let boardType = BoardSets._COPENHAGEN
 
-
 boardType = BoardSets._COPENHAGEN
-// class Gameboard extends React.Component {
 function Gameboard() {
+    const [chosenPiece, updatedChosenPiece] = useState("")
+
 
     const BuildBoard = (boardType: any[]) => {
         let width = boardType.length
@@ -32,19 +32,30 @@ function Gameboard() {
                 } else {
                     position = OTHER
                 }
+                
                 row.push(
                     <Tile
                         key={`${r}${c}`}
                         coordinates={coords}
                         position={position}
                         state={boardType[r][c]}
-                        isPicked={false}
+                        isChosenOne={chosenPiece === `${coords.row}-${coords.column}`}
+                        handleClick={handleClick}
                     />
                 )
             }
             boardTiles.push(row)
         }
         return <div className='gameboard'>{boardTiles}</div>
+    }
+    const handleClick = (coordinates: Coordinates) => {
+        // check for empty neighbours
+        // check is player's turn
+        choosePiece(coordinates)
+    }
+    const choosePiece = (coordinates: Coordinates) => {
+        const pieceChosen = `${coordinates.row}-${coordinates.column}`
+        updatedChosenPiece(pieceChosen)
     }
    
     return (

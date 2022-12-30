@@ -17,32 +17,47 @@ import {
 interface TileType {
     coordinates: Coordinates,
     position: TilePosition,
-    state: TileState.A | TileState.D | TileState.K | TileState._,
-    isPicked: boolean
+    state: TileState.A | TileState.D | TileState.K | TileState.EMPTY,
+    isChosenOne: boolean,
+    handleClick: (coordinates: Coordinates) => void,
 }
 
 const Tile = ({
     coordinates,
     position,
     state,
-    isPicked
+    isChosenOne,
+    handleClick,
 }: TileType) => {
 
     // TODO: tile classes should include
-    // board-square (always) position (always) isPicked (if isPicked)
-    let piece = state
+    //  isPicked (if isPicked)
     const tileClasses = classNames({
         "board-square": true,
         [IS_CORNER]: corner(position),
         [IS_CENTER]: center(position),
-        [`${state}`]: true
+    })
+    
+    // add checks for attacker/defender/king (constants/boardsets) and add class accordingly
+    const pieceClasses = classNames({
+        "board-square": true,
+        [`${state}`]: true,
+        chosen: isChosenOne,
     })
 
     return (
         <div
             id={`${coordinates.row}-${coordinates.column}`}
             className={tileClasses}
-        />
+            onClick={() => handleClick(coordinates)}
+        >
+            {state !==  TileState.EMPTY && (
+                <div 
+                    id={`${coordinates.row}-${coordinates.column}`}
+                    className={pieceClasses}
+                />
+            )}
+        </div>
     )
 }
 
