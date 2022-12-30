@@ -31,7 +31,7 @@ const Tile = ({
 }: TileType) => {
 
     // TODO: tile classes should include
-    //  isPicked (if isPicked)
+    //  isTarget (if isTarget)
     const tileClasses = classNames({
         "board-square": true,
         [IS_CORNER]: corner(position),

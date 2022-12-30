@@ -49,8 +49,8 @@ function Gameboard() {
         return <div className='gameboard'>{boardTiles}</div>
     }
     const handleClick = (coordinates: Coordinates) => {
-        // check for empty neighbours
         // check is player's turn
+        // check for empty neighbours
         choosePiece(coordinates)
     }
     const choosePiece = (coordinates: Coordinates) => {
