@@ -1,15 +1,20 @@
-export enum Piece {
-    _ = "_",
-    A = "A",
-    D = "D",
-    K = "K"
+// TileState feels like the wrong description... TileContains? TileIs?
+export enum TileState {
+    _ = "Empty",
+    A = "Attacker",
+    D = "Defender",
+    K = "King"
 }
-const _ = Piece._
-const A = Piece.A
-const D = Piece.D
-const K = Piece.K
+export const _ = TileState._
+// const _ = TileState._
+export const A = TileState.A
+// const A = TileState.A
+export const D = TileState.D
+// const D = TileState.D
+export const K = TileState.K
+// const K = TileState.K
 
-// TODO: add names
+// TODO: add other board types
 export class BoardSets {
     static readonly _COPENHAGEN = [
         [_, _, _, A, A, A, A, A, _, _, _],

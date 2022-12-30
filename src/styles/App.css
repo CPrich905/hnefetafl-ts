@@ -28,10 +28,12 @@ div.board-square {
   border: 1px dashed black;
 }
 
+/* add styling for side pieces/army start positions? */
 div.center, div.corner {
   background-color: grey;
 }
 
+/* Get better images for King, Defender, Attacker */
 div.king {
   background-image: url(https://images.fineartamerica.com/images-medium-large-5/king-chess-piece-ktsdesign.jpg);
   background-size: 100%;
