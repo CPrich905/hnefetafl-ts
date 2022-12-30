@@ -2,6 +2,17 @@ import { Coordinates } from "../types/Coordinates"
 import { TileState } from "./BoardSets" 
 import { TilePosition } from "../types/TilePosition"
 import classNames from "classnames"
+import {
+    corner,
+    IS_CORNER,
+    center,
+    IS_CENTER
+} from "./../constants"
+
+// import { 
+//     attacker,
+//     ATTACKER
+// } from "./BoardSets"
 
 interface TileType {
     coordinates: Coordinates,
@@ -19,20 +30,19 @@ const Tile = ({
 
     // TODO: tile classes should include
     // board-square (always) position (always) isPicked (if isPicked)
+    let piece = state
     const tileClasses = classNames({
-        "board-square": true
+        "board-square": true,
+        [IS_CORNER]: corner(position),
+        [IS_CENTER]: center(position),
+        [`${state}`]: true
     })
 
-    // TODO: Piece classes should include
-    // if not TileState._ add a class for the piece (A, D, K)
     return (
         <div
             id={`${coordinates.row}-${coordinates.column}`}
-            className={`board-square ${position}`}
-        >
-            <div className={`${state}`}></div>
-            
-        </div>
+            className={tileClasses}
+        />
     )
 }
 
