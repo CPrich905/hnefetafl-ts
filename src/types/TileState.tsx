@@ -1,4 +1,4 @@
-import { _, A, D, K } from "../components/BoardSets"
+import { _, A, D, K } from "../constants"
 
 export type TileState =
     | typeof _

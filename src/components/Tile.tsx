@@ -1,5 +1,5 @@
 import { Coordinates } from "../types/Coordinates"
-import { TileState } from "./BoardSets" 
+import { TileState } from "./../constants"
 import { TilePosition } from "../types/TilePosition"
 import classNames from "classnames"
 import {

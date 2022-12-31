@@ -1,15 +1,4 @@
-// TileState feels like the wrong description... TileContains? TileIs?
-export enum TileState {
-    EMPTY = "empty",
-    A = "attacker",
-    D = "defender",
-    K = "king"
-}
-
-export const _ = TileState.EMPTY
-export const A = TileState.A
-export const D = TileState.D
-export const K = TileState.K
+import { A, D, K, _ } from "../constants"
 
 // TODO: add other board types
 export class BoardSets {
