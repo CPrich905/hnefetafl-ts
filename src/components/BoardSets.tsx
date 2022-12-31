@@ -11,11 +11,6 @@ export const A = TileState.A
 export const D = TileState.D
 export const K = TileState.K
 
-// export const attacker = (value: string) => value === "king" || value === "attacker"
-// export const defender = (value: string) => value === "king" || value === "attacker"
-
-// export const ATTACKER = "attacker"
-
 // TODO: add other board types
 export class BoardSets {
     static readonly _COPENHAGEN = [

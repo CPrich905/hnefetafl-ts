@@ -39,8 +39,11 @@ body {
   &.chosen {
     background-color: gold;
   }
-  &.center, .corner {
+  &.corner, &.center {
     background-color: grey;
+  }
+  &.destination {
+    border: 2px dashed orange;
   }
 }
 

@@ -12,6 +12,7 @@ let boardType = BoardSets._COPENHAGEN
 boardType = BoardSets._COPENHAGEN
 function Gameboard() {
     const [chosenPiece, updatedChosenPiece] = useState("")
+    const [destination, updateDestination] = useState("")
 
 
     const BuildBoard = (boardType: any[]) => {
@@ -38,9 +39,11 @@ function Gameboard() {
                         key={`${r}${c}`}
                         coordinates={coords}
                         position={position}
-                        state={boardType[r][c]}
+                        tileState={boardType[r]?.[c]}
                         isChosenOne={chosenPiece === `${coords.row}-${coords.column}`}
-                        handleClick={handleClick}
+                        isDestination={destination === `${coords.row}-${coords.column}`}
+                        handleClickPiece={handleClickPiece}
+                        handleClickTile={handleClickTile}
                     />
                 )
             }
@@ -48,7 +51,23 @@ function Gameboard() {
         }
         return <div className='gameboard'>{boardTiles}</div>
     }
-    const handleClick = (coordinates: Coordinates) => {
+    const handleClickTile = async (coordinates: Coordinates) => {
+        if (!chosenPiece) {
+            return
+        }
+        // get chosenPiece coordinates
+        // const [currentRow, currentCol] = chosenPiece
+        // check for:
+            // is valid move (row/column match)
+        chooseDestinationTile(coordinates)
+    }
+    
+    const chooseDestinationTile = (coordinates: Coordinates) => {
+        updateDestination(`${coordinates.row}-${coordinates.column}`)
+    }
+
+
+    const handleClickPiece = (coordinates: Coordinates) => {
         // check is player's turn
         // check for empty neighbours
         choosePiece(coordinates)

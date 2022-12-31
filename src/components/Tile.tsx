@@ -9,25 +9,24 @@ import {
     IS_CENTER
 } from "./../constants"
 
-// import { 
-//     attacker,
-//     ATTACKER
-// } from "./BoardSets"
-
 interface TileType {
     coordinates: Coordinates,
     position: TilePosition,
-    state: TileState.A | TileState.D | TileState.K | TileState.EMPTY,
+    tileState: TileState.A | TileState.D | TileState.K | TileState.EMPTY,
     isChosenOne: boolean,
-    handleClick: (coordinates: Coordinates) => void,
+    isDestination: boolean,
+    handleClickPiece: (coordinates: Coordinates) => void,
+    handleClickTile: (coordinates: Coordinates) => void,
 }
 
 const Tile = ({
     coordinates,
     position,
-    state,
+    tileState,
     isChosenOne,
-    handleClick,
+    isDestination,
+    handleClickPiece,
+    handleClickTile,
 }: TileType) => {
 
     // TODO: tile classes should include
@@ -36,12 +35,13 @@ const Tile = ({
         "board-square": true,
         [IS_CORNER]: corner(position),
         [IS_CENTER]: center(position),
+        destination: isDestination,
     })
     
     // add checks for attacker/defender/king (constants/boardsets) and add class accordingly
     const pieceClasses = classNames({
         "board-square": true,
-        [`${state}`]: true,
+        [`${tileState}`]: true,
         chosen: isChosenOne,
     })
 
@@ -49,12 +49,13 @@ const Tile = ({
         <div
             id={`${coordinates.row}-${coordinates.column}`}
             className={tileClasses}
-            onClick={() => handleClick(coordinates)}
-        >
-            {state !==  TileState.EMPTY && (
+            onClick={() => handleClickTile(coordinates)}
+            >
+            {tileState !==  TileState.EMPTY && (
                 <div 
-                    id={`${coordinates.row}-${coordinates.column}`}
-                    className={pieceClasses}
+                id={`${coordinates.row}-${coordinates.column}`}
+                className={pieceClasses}
+                    onClick={() => handleClickPiece(coordinates)}
                 />
             )}
         </div>
